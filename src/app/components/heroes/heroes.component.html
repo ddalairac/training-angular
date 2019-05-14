@@ -1,32 +1,24 @@
 <h1>
-  heroes!
+    <i class="fas fa-mask"></i> Heroes!
 </h1>
-<!-- 
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
-  </li>
-</ul>
+<hr>
 
-<div *ngIf="selectedHero">
-  <h2>{{selectedHero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedHero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedHero.name" placeholder="name" />
-    </label>
+<div class="row">
+  <div class="col">
+    <ul class="list-group">
+      <li *ngFor="let hero of heroes" class="list-group-item" 
+      [ngClass]="{
+        'active': hero == selectedHero,
+        'disabled': hero.enable == false
+      }"
+        (click)="onSelect(hero)">
+        <span class="id">{{hero.id}}</span> {{hero.name}}
+
+        <span class="badge">{{hero.likes}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="col">
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
   </div>
 </div>
- -->
-
-<ul class="heroes">
-  <li *ngFor="let hero of heroes"
-    [class.selected]="hero === selectedHero"
-    (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
-  </li>
-</ul>
-
-
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>

@@ -13,5 +13,10 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  votePlus(){
+    this.hero.likes ++
+  }
+  voteLess(){
+    this.hero.likes --
+  }
 }
