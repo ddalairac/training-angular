@@ -1,3 +1,12 @@
+# Angular-training
+Repositorio para pruebas del curso de Angular
+
+El curso puede verse en este PPT compartido.
+https://docs.google.com/presentation/d/1iDozhEjcDByDWbrbmDhynlFnPCwNsvH36DCJQ92SJaA/edit?usp=sharing
+
+
+
+
 # NgHeros
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
