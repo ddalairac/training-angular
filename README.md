@@ -1,3 +1,6 @@
+
+![angular_cover](https://github.com/ddalairac/training-angular/blob/master/cover.png)
+
 # Angular-training
 Repositorio para pruebas del curso de Angular
 
