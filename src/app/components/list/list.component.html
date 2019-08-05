@@ -11,7 +11,7 @@
         'active': hero == selectedHero,
         'disabled': hero.enable == false
       }"
-        (click)="onSelect(hero)">
+        (click)="onClickSelect(hero)">
         <span class="id">{{hero.id}}</span> {{hero.name}}
 
         <span class="badge">{{hero.likes}}</span>

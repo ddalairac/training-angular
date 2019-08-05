@@ -13,6 +13,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { EditComponent } from './components/edit/edit.component';
 import { MessageService } from './services/message.service';
 import { messageServiceFactory } from './services/message.factory';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { messageServiceFactory } from './services/message.factory';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     MessageService
