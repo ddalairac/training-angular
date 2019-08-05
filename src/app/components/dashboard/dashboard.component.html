@@ -1,3 +1,18 @@
-<p>
-  dashboard works!
-</p>
+<h1>
+  <i class="fas fa-mask"></i> Heroes Dashboard
+</h1>
+<div class="row">
+  <div *ngFor="let hero of heroes" class="col-md-3 card" [class.disabled]="hero.enable == false"
+    (click)="onSelect(hero)">
+    <h4 class="title">
+      <span class="id">{{hero.id}}</span> {{hero.name}}
+      <span class="badge">{{hero.likes}}</span></h4>
+    <p><span>{{hero.description}}</span></p>
+    <div class="buttons">
+      <button class="btn btn-primary">Ver</button>
+      <button class="btn btn-secondary" routerLink="/edit/{{hero.id}}">Editar</button>
+      <!-- (click)="goto(hero.id)" -->
+    </div>
+
+  </div>
+</div>
