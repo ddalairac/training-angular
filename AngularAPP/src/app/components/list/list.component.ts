@@ -3,6 +3,8 @@ import { Hero } from '../../models/hero';
 
 import { HEROES } from '../../services/mock-heros';
 import { HeroesService } from 'src/app/services/heroes.service';
+import { Observable } from 'rxjs';
+import { ErrorTracker } from 'src/app/models/error-tracker';
 
 @Component({
   selector: 'app-heroes',
@@ -12,7 +14,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 export class ListComponent implements OnInit {
 
 
-  heroes: Hero[] = []
+  heroes: Hero[] 
   selectedHero: Hero
 
   constructor(private heroService: HeroesService) { }
@@ -25,12 +27,12 @@ export class ListComponent implements OnInit {
    */
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(
-      data => { // si el servidor retorno data, ejecuta una funcion
+      (data:Hero[]) => { // si el servidor retorno data, ejecuta una funcion
         this.heroes = data
         this.selectedHero = this.heroes[0],
         console.log("GET Heroes OK") 
       },
-      err => console.log("GET Heroes ERR", err), // si el servidor retorno error, ejecuta una funcion
+      (err:ErrorTracker) => console.log("GET Heroes ERR", err), // si el servidor retorno error, ejecuta una funcion
       () => console.log("GET Heroes finish") // cuando termina el request, ejecuta una funcion
     );
   }
