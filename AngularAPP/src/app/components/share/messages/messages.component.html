@@ -1,7 +1,8 @@
+<div *ngIf="messageService.messages.length > 0">
+  <p>Messages <button class="btn btn-default" (click)="onClickCloseAll()"><i class="fas fa-times"></i></button></p>
 
-
-<div *ngIf="messageService.messages.length">
-  <p>Messages <button class="btn btn-default" (click)="messageService.clear()"><i class="fas fa-times"></i></button></p>
-  
-  <div  *ngFor='let message of messageService.messages' class="alert alert-info" role="alert">{{message}} </div>
+  <div *ngFor='let message of messageService.messages; let index = index' class="alert alert-{{message.type}}" role="alert">
+    {{message.text}}
+    <div class="actionBtn"><i class="fa fa-times" (click)="onClickClose(index)"></i></div>
+  </div>
 </div>

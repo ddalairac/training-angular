@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/services/message.service';
+import { Message, eMtype } from 'src/app/models/message';
 
 @Component({
   selector: 'app-messages',
@@ -8,10 +9,19 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class MessagesComponent implements OnInit {
 
+  
   constructor(public messageService: MessageService) {}
 
   ngOnInit() {
-    this.messageService.add("Hola")
+    let m:Message = {text: "Training Angular", type:eMtype.Success}
+    this.messageService.add(m)
   }
+  onClickClose(index){
+    this.messageService.removeIndex(index)
+  }
+  onClickCloseAll(){
+    this.messageService.removeAll()
+  }
+
 
 }

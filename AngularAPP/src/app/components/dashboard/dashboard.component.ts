@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from 'src/app/models/hero';
 import { HeroesService } from 'src/app/services/heroes.service';
 import { Router } from '@angular/router';
+import { ErrorTracker } from 'src/app/models/error-tracker';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,28 +11,19 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Hero[] = []//= HEROES;
+  heroes: Hero[] = []
 
-  constructor(private heroService: HeroesService, private router: Router) { }
+  constructor(
+    private heroService: HeroesService,
+    // private router: Router
+  ) { }
+
   ngOnInit() {
-    this.getHeroes();
+    this.heroService.getHeroes().subscribe((data: Hero[]) => this.heroes = data);
   }
-  /**
-   * Get Heros, hace el request de data al servidor
-   */
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(
-      data => { // si el servidor retorno data, ejecuta una funcion
-        this.heroes = data
-        console.log("GET Heroes OK")
-      },
-      err => console.log("GET Heroes ERR", err), // si el servidor retorno error, ejecuta una funcion
-      () => console.log("GET Heroes finish") // cuando termina el request, ejecuta una funcion
-    );
-  }
-  
-//  onClickGoto(id) {
-//     console.log('edit/' + id)
-//     this.router.navigateByUrl('edit', id)
-//   }
+
+  //  onClickGoto(id) {
+  //     console.log('edit/' + id)
+  //     this.router.navigateByUrl('edit', id)
+  //   }
 }
