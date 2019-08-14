@@ -20,10 +20,12 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.getHero(id);
+    this.getHeroObservable(id);
     this.getHeroPromise(id);
+    this.getHeroPromiseAsync(id)
   }
-  getHero(id:number): void {
+  // ! observable
+  getHeroObservable(id:number): void {
     // this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
     this.heroService.getHeroById(id).subscribe(
       data => { this.hero = data; console.log("GET Heroes OK") }, // si el servidor retorno data, ejecuta una funcion
@@ -32,12 +34,30 @@ export class EditComponent implements OnInit {
     );
   }
 
+  // ! promise
   getHeroPromise(id:number): void {
     this.heroService.getHeroByIdPromise(id)
       .then(
         (data: string) => { console.log("GET Heroes OK"),   this.messageService.add({text:"promise ID"+id+" OK"});},
-        (err: string) => { console.log("GET Hero ERR", err),this.messageService.add({text:"promise ID"+id+" Err: "+err}); }
+        (err: string) => { console.log(".then GET Hero ERR", err),this.messageService.add({text:"promise ID"+id+" Err: "+err}); }
+      ).catch(
+        (error:Error) =>{ console.log(".catch Error", error)} 
       )
+  }
+
+  // ! promise & async
+  // async hace que el await sea solo dentro de la funcion, implementar esta funcion no frena la ejecución 
+  async getHeroPromiseAsync(id:number): Promise<void> {
+    this.heroService.getHeroByIdPromise(id)
+      try {
+        // await va a pausar la ejecución hasta que tenga una respuesta.
+        let data: string = await this.heroService.getHeroByIdPromise(id)
+        console.log("async GET Heroes OK",data)
+      }
+      catch (error){
+        // los errores se manejan todos desde el catch
+        console.log("async catch Error", error)
+      }
   }
   goBack(): void {
     this.location.back();
