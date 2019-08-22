@@ -1,21 +1,38 @@
-<h1><a href="" (click)="goBack()"> <i class="fas fa-chevron-left"></i></a>  Editar</h1>
+<h1>
+  <a href="" (click)="goBack()"> <i class="fas fa-chevron-left"></i></a>
+  {{ title }}
+</h1>
 <div *ngIf="hero">
-  <h2><small>{{hero.id}} </small>{{hero.name | uppercase}} </h2>
-  <hr>
+  <h2>
+    <small>{{ hero.id }} </small>{{ hero.name | uppercase }}
+  </h2>
+  <hr />
 
   <div class="form-group">
     <label for="name">Nombre</label>
-    <input [(ngModel)]="hero.name" type="text" class="form-control" id="name" placeholder="Nombre">
+    <input
+      [(ngModel)]="hero.name"
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Nombre"
+    />
   </div>
   <div class="form-group">
     <label for="description">Descripcion</label>
-    <textarea [(ngModel)]="hero.description" class="form-control" rows="3"></textarea>
+    <textarea
+      [(ngModel)]="hero.description"
+      class="form-control"
+      rows="3"
+    ></textarea>
   </div>
 
-  <button type="button" class="btn btn-default" (click)=votePlus()>
+  <button type="button" class="btn btn-default" (click)="votePlus()">
     <i class="far fa-thumbs-up"></i>
   </button>
-  <button type="button" class="btn btn-default" (click)=voteLess()>
+  <button type="button" class="btn btn-default" (click)="voteLess()">
     <i class="far fa-thumbs-down"></i>
   </button>
+
+  <button class="btn btn-primary" (click)="save()">save</button>
 </div>

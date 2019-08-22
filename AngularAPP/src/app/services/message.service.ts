@@ -5,7 +5,7 @@ import { Message, eMtype } from '../models/message';
 export class MessageService {
 
   constructor() { }
-  public messages: Message[] = [];
+  private messages: Message[] = [];
 
   add(message: Message) {
     let today = new Date();
@@ -24,7 +24,7 @@ export class MessageService {
     }
     this.messages.push(message);
   }
-  removeIndex(index) {
+  public removeIndex(index) {
     this.messages.splice(index, 1)
   }
   removeAll() {
