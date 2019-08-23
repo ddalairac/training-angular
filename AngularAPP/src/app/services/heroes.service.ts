@@ -26,7 +26,7 @@ export class HeroesService {
     // return of(HEROES);
     return this.http
       .get<Hero[]>(this.server + "/heros")
-      .pipe(catchError(this.handleError)); // catchError: ejecuta una funcion si hay errores
+      .pipe(catchError(this.handleError)); // catchError: intercepta los errores y ejecuta una funcion
   }
   private handleError(error: HttpErrorResponse): Observable<ErrorTracker> {
     let dataError = new ErrorTracker();
@@ -41,7 +41,8 @@ export class HeroesService {
       dataError.friendlyMessage =
         "Ups! algo paso, no contacte al admin porque tampoco sabe";
     }
-    return throwError(dataError);
+    // alert("Error: " + dataError.friendlyMessage);
+    return throwError(dataError); // Envia al componente el objeto error modificado.
   }
 
   getHeroById(id: number): Observable<Hero> {
