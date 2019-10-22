@@ -1,42 +1,46 @@
 <h1><i class="fas fa-mask"></i> Heroes Dashboard</h1>
-
-<div class="row">
-  <div class="col-md-3 ">
-    <button class="btn btn-outline-primary btn-lg " routerLink="/new/">
-      <i class="fa fa-plus" (click)="onClickDelete(hero.id)"></i> Nuevo
-    </button>
-    <br />
-    <br />
-  </div>
-
+<div class="container-fluid">
   <div class="row">
-    <div
-      *ngFor="let hero of heroes"
-      class="col-md-3 card"
-      [class.disabled]="hero.enable == false"
-    >
-      <h4 class="title">
-        <span class="id">{{ hero.id }}</span> {{ hero.name }}
-        <span class="badge">{{ hero.likes }}</span>
-      </h4>
-      <p>
-        <span>{{ hero.description }}</span>
-      </p>
-      <div class="buttons">
-        <!-- <button class="btn btn-secondary" routerLink="/edit/{{ hero.id }}">
+    <div class="col-md-3 ">
+      <button class="btn btn-outline-primary btn-lg " routerLink="/new/">
+        <i class="fa fa-plus" (click)="onClickDelete(hero.id)"></i> Nuevo
+      </button>
+      <br />
+      <br />
+    </div>
+
+    <div class="row">
+      <div
+        *ngFor="let hero of heroes"
+        class="col-md-3 "
+        [class.disabled]="hero.enable == false"
+      >
+        <div class="card">
+          <h4 class="title">
+            <span class="id">{{ hero.id }}</span> {{ hero.name }}
+            <span class="badge">{{ hero.likes }}</span>
+          </h4>
+          <p>
+            <span>{{ hero.description }}</span>
+          </p>
+          <div class="buttons">
+            <!-- <button class="btn btn-secondary" routerLink="/edit/{{ hero.id }}">
         Editar 
       </button> -->
 
-        <button
-          class="btn btn-secondary  btn-sm"
-          (click)="onClickGoto(hero.id)"
-        >
-          Editar
-        </button>
+            <button
+              class="btn btn-secondary  btn-sm"
+              (click)="onClickGoto(hero.id)"
+            >
+              Editar
+            </button>
 
-        <button class="btn btn-link">
-          <i class="fa fa-times" (click)="onClickDelete(hero.id)"></i> delete
-        </button>
+            <button class="btn btn-link">
+              <i class="fa fa-times" (click)="onClickDelete(hero.id)"></i>
+              delete
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

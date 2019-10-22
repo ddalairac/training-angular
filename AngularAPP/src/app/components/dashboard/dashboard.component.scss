@@ -1,21 +1,23 @@
-.card{
-    position: relative;
-    min-height: 50px;
-    padding-top: 15px;
-    padding-bottom: 50px;
+.card {
+  position: relative;
+  min-height: 50px;
+  padding: 15px;
+  padding-bottom: 50px;
+  margin: -8px;
+  margin-bottom: 16px;
 }
-.title{
-    padding-right: 10px;
+.title {
+  padding-right: 10px;
 }
-.badge{
-    position: absolute;
-    right: 10px;
-    top:20px;
+.badge {
+  position: absolute;
+  right: 10px;
+  top: 20px;
 }
-.buttons{
-    position: absolute;
-    bottom: 10px;
-    > .btn{
-        margin-right: 5px;
-    }
+.buttons {
+  position: absolute;
+  bottom: 10px;
+  > .btn {
+    margin-right: 5px;
+  }
 }

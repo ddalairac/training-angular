@@ -16,7 +16,8 @@
       "id": 13,
       "name": "Bombasto",
       "likes": 1,
-      "description": "Es terrorista y esta dispuesto a inmolarse en cualquier momento"
+      "description": "Es terrorista y esta dispuesto a inmolarse en cualquier momento",
+      "enable": false
     },
     {
       "id": 14,
@@ -63,7 +64,8 @@
     {
       "name": "Marcos Piedra",
       "description": "Infecta con mala suerte a sus enemigos",
-      "id": 21
+      "id": 21,
+      "likes": 6
     }
   ]
 }

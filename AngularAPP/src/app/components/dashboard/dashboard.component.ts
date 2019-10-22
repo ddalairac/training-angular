@@ -15,11 +15,13 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroesService, private router: Router) {}
 
   ngOnInit() {
+    this.getHeros();
+  }
+  getHeros() {
     this.heroService
       .getHeroes()
       .subscribe((data: Hero[]) => (this.heroes = data));
   }
-
   onClickGoto(id) {
     console.log("edit/" + id);
     this.router.navigateByUrl("edit/" + id);
@@ -30,6 +32,7 @@ export class DashboardComponent implements OnInit {
     this.heroService.deleteHeroById(id).subscribe(
       (data: void) => {
         console.log("delete id", id);
+        this.getHeros();
         // this.router.navigateByUrl("list/");
       },
       (err: ErrorTracker) => {
