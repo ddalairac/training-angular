@@ -19,6 +19,12 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+
+    // try {
+    //   localStorage.setItem("srt", "blablablatoken");
+    // } catch (e) {
+    //   console.error("Error saving to localStorage", e);
+    // }
   }
 
   /**
